@@ -9,4 +9,4 @@ my discord is Julie pilgrim#3328
 my osu! username is redleader20056
 steam username is penismusic27
 if you use irc, im usually idling on irc.gbatemp.net, nick is scott_pilgrim
-I'm also active on gbatemp(username is scott_pilgrim)
+I'm also active on gbatemp(username is scott_pilgrim)</p>

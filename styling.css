@@ -1,11 +1,11 @@
 body {
-    background-color: black;;
+    background-color: black;
 }
 
 p {
     text-align: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Courier New', Courier, monospace;
 }
 
 h1 {

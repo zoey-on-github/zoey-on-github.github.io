@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+
+        <h1>Hey, I'm zoey and this is my website</h1>
+    </head>
 <body>
-    
+
     <link rel="stylesheet" type="text/css" href="styling.css" media=”screen” />
 <p>I'm a trans women(pronouns are she/they) and I make things sometimes. Sometimes those things are pretty ok. </p>
 
@@ -19,5 +14,3 @@
 <p> <a href= "https://steamcommunity.com/profiles/76561198406512469">my steam profile</a></p>
 <p>if you use irc, im usually idling on #archlinux-offtopic, nick is julie_pilgrim</p>
 <p><a href = "https://gbatemp.net/members/julie_pilgrim.537318">my gbatemp profile</a></p>
-</body>
-</html>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
     background-color: rgb(24,26,27);
 }
@@ -5,12 +6,13 @@ body {
 p {
     text-align: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 h1 {
     color: white;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 body,html 

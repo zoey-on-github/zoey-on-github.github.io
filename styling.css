@@ -2,19 +2,20 @@
 body {
     background-color: rgb(24,26,27);
 }
-
-p {
-    text-align: center;
+.stuff {
+   text-align: center; 
+}
+ p {
+    display: inline;
     color: white;
     font-family: 'Poppins', sans-serif;
-    width: 700px;
 }
 
 h1 {
     color: white;
     text-align: center;
+    display: inline;
     font-family: 'Poppins', sans-serif;
-    width: 700px;
 }
 
 body,html 

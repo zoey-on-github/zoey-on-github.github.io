@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 
+/* Global styles */
 * {
   box-sizing: border-box;
 }
@@ -10,18 +11,23 @@ html {
   height: 100%;
 }
 
+/* Body styles */
 body {
   background-color: rgb(24, 26, 27);
   color: white;
   font-family: "Poppins", sans-serif;
+
+  /* Fix height */
   padding-block: 1px;
   margin-block: 0;
 }
 
+/* General styles */
 h1 {
   text-align: center;
 }
 
+/* Cleaner links */
 :where(a) {
   color: #66f;
   text-underline-offset: 0.2em;
@@ -30,6 +36,7 @@ h1 {
   color: #d59;
 }
 
+/* Class styles */
 .stuff {
   text-align: center;
   padding-left: 60px;

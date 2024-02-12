@@ -26,6 +26,14 @@ h1 {
   font-family: "Poppins", sans-serif;
 }
 
+:where(a) {
+  color: #66f;
+  text-underline-offset: 0.2em;
+}
+:where(a):visited {
+  color: #d59;
+}
+
 body,
 html {
   height: 100%;

@@ -17,6 +17,10 @@ body {
   color: white;
   font-family: "Poppins", sans-serif;
 
+  /* Readable line length */
+  max-width: 1060px;
+  margin-inline: auto;
+
   /* Fix height */
   padding-block: 1px;
   margin-block: 0;

@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="styling.css">
     <h1>generating an blog index with python, because why not</h1>
 <p>
-after all this time, i decided that i should finally start some sort of blog. the problem was that i needed some kind of index to contain links to all my posts. after some thinking i realized that 
-   
-   
+after all this time, i decided that i should finally start some sort of blog. the problem was that i needed some kind of index to contain links to all my posts <br>
+after some thinking, i realized "hey, i can just generate a html file based on the contents of the html files for my blog posts". my first thought was to do it in a shell script of some sort <br>
+but i remembered that python is a thing, and there's some html parsing lib i found out about by <a href = "https://github.com/dotcs/xkcd-cli">looking at some random python program</a>. soon enough, i decided to install beautifulsoup and get to programming.<br>
+funnily enough, it wasn't until almost a full day later, when i was thinking of some really early bug in this script, where i had finally realized that i could've just as easily done this with js. DOM maniuplation is like javascript's bread and butter. but oh well. i was too deep into this to just give up that easily. anyways yeah i now have a script to generate an index page for my blog. it was far easier than i thought it would be. as for why i ended up doing this and not js, to be honest with you i just found it kind of funny to do this. on top of that, i've always been advocating for performance and whatnot so it's kind of a nice side effect in the way in a sense because i have a fully working blog/website with absolutely 0 JS which is an oddly nice feeling. also, i ended up adding a CI step of sorts to my website, something that just feels really funny to me given how stupid simple everything about this website is.
 </head>
-<body>      
+<body>

@@ -1,7 +1,7 @@
 import os
 
 f = open("wallpapers.html", "w", encoding="utf-8")
-f.write("    <link rel=\"stylesheet\" href=\"styling.css\">"+"\n")
+f.write("    <link rel=\"stylesheet\" href=\"wallpaper.css\">"+"\n")
 directory = os.fsdecode("wallpapers")
 for file in os.listdir(directory):
     filename = os.fsdecode(file)

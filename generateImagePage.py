@@ -7,5 +7,5 @@ directory = os.fsdecode("yuri")
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
     # with open("wallpapers/" + filename) as fp2:
-    f.write("<img src=\"" + sys.argv[2] + filename + "/" + "\">" + "\n")
+    f.write("<img src=\"" + sys.argv[2] + "/" + filename + "\">" + "\n")
 f.close()

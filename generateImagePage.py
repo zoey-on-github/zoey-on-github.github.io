@@ -3,7 +3,7 @@ import sys
 
 f = open(sys.argv[1], "w", encoding="utf-8")
 f.write("    <link rel=\"stylesheet\" href=\"wallpaper.css\">"+"\n")
-directory = os.fsdecode("yuri")
+directory = os.fsdecode(sys.argv[2])
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
     # with open("wallpapers/" + filename) as fp2:

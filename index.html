@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styling.css">
     <h1>hey, im julie</h1>
 
-   
+    <script src="snowstorm-min.js"></script>
    
 </head>
 <body>      
@@ -27,6 +27,16 @@ i also happen to "maintain" a blog, which you can check out by clicking on that 
 i also have a bunch of cool wallpapers <a href="wallpapers.html">here</a>
     </p>
 <a href="blog_index.html"><p align="center"><img src="https://assets.ppy.sh/user-profile-covers/13719414/6f98c713292ce42aa88ff71bd9950ef7dc72d169136c90b26721f121cd55c62c.jpeg" /></p></a>
+<script>
+    var image = document.createElement("img")
+    //image.setAttribute('src','https://assets.ppy.sh/user-profile-covers/13719414/6f98c713292ce42aa88ff71bd9950ef7dc72d169136c90b26721f121cd55c62c.jpeg')
+    const today = new Date();
+    let currentMonth = today.getMonth();
+    console.log(currentMonth)
+    if(currentMonth != 11) {
+        snowStorm.stop()
+    }
+</script>
 </body>
 </html>
 

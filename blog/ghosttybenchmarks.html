@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styling.css">
+    <title>Some terminal benchmarks</title>
+</head>
+<body>
+        <h1>Some ghostty benchmarks</h1>
+        <p>
+        recently, i decided to try out that hot new terminal ghostty. i haven't tried it for too long so i dont have that many actual thoughts on it(but i will say: the fact that it doesn't respect my fontconfig is really fucking lame), but I did run some basic terminal benchmarks on it. Here are the results(with other terminals as reference):
+        </p>
+<h2> Kitty's built-in benchmark(kitten __benchmark__) </h2>
+tabby(web terminal):
+<pre>
+<code>
+Results:
+  Only ASCII chars         : 14.33s     @ 14.0    MB/s
+  Unicode chars            : 11.73s     @ 15.4    MB/s
+  CSI codes with few chars : 13.02s     @ 7.7     MB/s
+  Long escape codes        : 46.46s     @ 16.9    MB/s
+  Images                   : 30.03s     @ 17.8    MB/s 
+</code>
+</pre>
+kitty:
+<pre>
+<code>
+Results:
+  Only ASCII chars         : 1.65s      @ 121.2   MB/s
+  Unicode chars            : 1.69s      @ 107.0   MB/s
+  CSI codes with few chars : 1.74s      @ 57.4    MB/s
+  Long escape codes        : 2.44s      @ 321.1   MB/s
+  Images                   : 2.04s      @ 261.1   MB/s
+</code>
+</pre>
+<h2>alacritty benchmark:</h2>
+<pre>
+<code>
+Results:
+
+  cursor_motion (105 samples @ 1.49 MiB):
+    95.59ms avg (90% < 101ms) +-4.82ms
+
+  dense_cells (35 samples @ 4.52 MiB):
+    287.89ms avg (90% < 310ms) +-20.59ms
+
+  light_cells (164 samples @ 1.01 MiB):
+    60.57ms avg (90% < 65ms) +-3.27ms
+
+  medium_cells (140 samples @ 1.02 MiB):
+    71.37ms avg (90% < 78ms) +-6.81ms
+
+  scrolling (49 samples @ 1 MiB):
+    172.73ms avg (90% < 186ms) +-20.22ms
+
+  scrolling_bottom_region (57 samples @ 1 MiB):
+    177.14ms avg (90% < 182ms) +-39.68ms
+
+  scrolling_bottom_small_region (55 samples @ 1 MiB):
+    183.16ms avg (90% < 182ms) +-63.07ms
+
+  scrolling_fullscreen (88 samples @ 1 MiB):
+    78.83ms avg (90% < 83ms) +-53.65ms
+
+  scrolling_top_region (51 samples @ 1 MiB):
+    196.47ms avg (90% < 189ms) +-101.27ms
+
+  scrolling_top_small_region (49 samples @ 1 MiB):
+    206.49ms avg (90% < 195ms) +-123.65ms
+
+  sync_medium_cells (105 samples @ 1.06 MiB):
+    94.9ms avg (90% < 83ms) +-114.08ms
+
+  unicode (116 samples @ 1.06 MiB):
+    85.9ms avg (90% < 84ms) +-76.82ms
+</code>
+</pre>
+
+kitty:
+<pre>
+<code>
+Results:
+
+  cursor_motion (318 samples @ 1.89 MiB):
+    31.03ms avg (90% < 33ms) +-4.57ms
+
+  dense_cells (106 samples @ 5.66 MiB):
+    93.87ms avg (90% < 99ms) +-7.39ms
+
+  light_cells (574 samples @ 1.05 MiB):
+    16.77ms avg (90% < 17ms) +-3.19ms
+
+  medium_cells (400 samples @ 1.02 MiB):
+    24.54ms avg (90% < 25ms) +-3.16ms
+
+  scrolling (57 samples @ 1 MiB):
+    146.58ms avg (90% < 151ms) +-3.27ms
+
+  scrolling_bottom_region (68 samples @ 1 MiB):
+    146.69ms avg (90% < 151ms) +-2.96ms
+
+  scrolling_bottom_small_region (68 samples @ 1 MiB):
+    148.65ms avg (90% < 153ms) +-3.37ms
+
+  scrolling_fullscreen (276 samples @ 1 MiB):
+    7.15ms avg (90% < 10ms) +-1.82ms
+
+  scrolling_top_region (68 samples @ 1 MiB):
+    148.29ms avg (90% < 152ms) +-3.12ms
+
+  scrolling_top_small_region (68 samples @ 1 MiB):
+    147.6ms avg (90% < 152ms) +-2.79ms
+
+  sync_medium_cells (248 samples @ 1.06 MiB):
+    39.91ms avg (90% < 40ms) +-8.55ms
+
+  unicode (2 samples @ 1.06 MiB):
+    5921ms avg (90% < 7083ms) +-1643.32ms
+</code>
+</pre>

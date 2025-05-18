@@ -39,7 +39,7 @@ h1 {
 :where(a):visited {
   color: #d59;
 }
-
+.data a, .data span, .data tr, .data td { white-space: pre-wrap; }
 /* Class styles */
 .stuff {
   text-align: center;

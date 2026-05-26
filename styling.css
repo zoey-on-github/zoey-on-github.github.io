@@ -3,52 +3,77 @@
 
 /* Global styles */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body,
 html {
-  height: 100%;
+    height: 100%;
 }
 
 /* Body styles */
 body {
-  background-color: rgb(24, 26, 27);
-  color: white;
-  font-family: "Poppins", sans-serif;
+    background-color: rgb(24, 26, 27);
+    color: white;
+    font-family: "Poppins", sans-serif;
 
-  /* Readable line length */
-  max-width: 1060px;
-  margin-inline: auto;
+    /* Readable line length */
+    max-width: 1060px;
+    margin-inline: auto;
 
-  /* Fix height */
-  padding-block: 1px;
-  margin-block: 0;
+    /* Fix height */
+    padding-block: 1px;
+    margin-block: 0;
 }
 
 /* General styles */
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 /* Cleaner links */
 :where(a) {
-  color: #66f;
-  text-underline-offset: 0.2em;
+    color: #66f;
+    text-underline-offset: 0.2em;
 }
 :where(a):visited {
-  color: #d59;
+    color: #d59;
 }
-.data a, .data span, .data tr, .data td { white-space: pre-wrap; }
+.data a,
+.data span,
+.data tr,
+.data td {
+    white-space: pre-wrap;
+}
 /* Class styles */
 .stuff {
-  text-align: center;
-  padding-left: 60px;
-  padding-right: 60px;
+    text-align: center;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 canvas {
-  display: block;
-  position: fixed;
-  z-index: -1;
+    display: block;
+    position: fixed;
+    z-index: -1;
+}
+
+#qc-webring-footer {
+    display: flex;
+    flex-direction: row;
+    height: 10vmin;
+    justify-content: space-between;
+    padding: 1vmin;
+}
+
+#qc-webring-footer a {
+    transition: transform 0.5s ease-in-out;
+}
+
+#qc-webring-footer a:hover {
+    transform: scale(1.05);
+}
+
+#qc-webring-footer img {
+    height: 10vmin;
 }

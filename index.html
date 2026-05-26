@@ -9,9 +9,9 @@
     <h1>hey, im julie</h1>
 
     <script src="snowstorm-min.js"></script>
-   
+
 </head>
-<body>      
+<body>
     <p>
     i'm a gay raccoon girl on the internet(she/they). i'm a backend developer/sysadmin, and i love computers and women. i also have a pretty big interest in video games, both playing and making them. if im not outside i spend a grand majority of my days in my room either:<br>
        on discord(juliethefoxcoon)<br>
@@ -28,6 +28,15 @@ i also have a bunch of cool wallpapers <a href="wallpapers.html">here</a>
     </p>
 <a href="blog_index.html"><p align="center"><img src="https://assets.ppy.sh/user-profile-covers/13719414/6f98c713292ce42aa88ff71bd9950ef7dc72d169136c90b26721f121cd55c62c.jpeg" /></p></a>
 <script>
+    document.addEventListener('keydown', (event) => {
+        //e.preventDefault();
+        if(event.key === "h") {
+          window.location.href = "https://webring.queercoded.dev/prev?source=zoey-on-github.github.io";
+        }
+        if(event.key === "l") {
+          window.location.href = "https://webring.queercoded.dev/next?source=zoey-on-github.github.io";
+        }
+    });
     var image = document.createElement("img")
     //image.setAttribute('src','https://assets.ppy.sh/user-profile-covers/13719414/6f98c713292ce42aa88ff71bd9950ef7dc72d169136c90b26721f121cd55c62c.jpeg')
     const today = new Date();
@@ -36,8 +45,17 @@ i also have a bunch of cool wallpapers <a href="wallpapers.html">here</a>
     if(currentMonth != 11) {
         snowStorm.stop()
     }
+
+
+
 </script>
+<div id="qc-webring-footer">
+        <a href="https://webring.queercoded.dev/prev?source=zoey-on-github.github.io">
+            <img src="l-key.png">
+        </a>
+        <a href="https://webring.queercoded.dev/next?source=zoey-on-github.github.io">
+            <img src="image-removebg-preview.png">
+        </a>
+    </div>
 </body>
 </html>
-
-

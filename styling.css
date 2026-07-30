@@ -1,6 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@font-face {
+  font-family: "marathon";
+  src: url("/body.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: ppFraktionMono;
+  src: url("/PPFraktionMono-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 /* Global styles */
 * {
     box-sizing: border-box;
@@ -13,9 +27,10 @@ html {
 
 /* Body styles */
 body {
-    background-color: rgb(24, 26, 27);
+    background-color: rgb(0, 0, 0);
     color: white;
-    font-family: "Poppins", sans-serif;
+    /*font-family: "Poppins", sans-serif;*/
+    font-family: ppFraktionMono;
 
     /* Readable line length */
     max-width: 1060px;
@@ -29,6 +44,8 @@ body {
 /* General styles */
 h1 {
     text-align: center;
+    font-family: "marathon";
+    color: #c3ff0b;
 }
 
 /* Cleaner links */

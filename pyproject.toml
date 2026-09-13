@@ -1,0 +1,19 @@
+[project]
+name = "zoey-on-github-github-io"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "zoey-on-github", email = "88806187+zoey-on-github@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+]
+
+[project.scripts]
+zoey-on-github-github-io = "zoey_on_github_github_io:main"
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"

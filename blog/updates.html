@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>a better way of blocking macOS updates</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="styling.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">a better way of blocking macOS updates</h1>
+</header>
+<p>a while ago, I read <a
+href="https://robservatory.com/block-the-upgrade-to-tahoe-alerts-and-system-settings-indicator/">rob’s
+amazing article on blocking updates to macOS tahoe</a>.<br />
+as great as this is, it(like stated in the article) only works for 90
+days, after which you’ll have to do it again<br />
+i sent this article to a friend of mine and they showed me a much better
+way of stopping update notifications</p>
+<pre><code>sudo defaults write com.apple.MobileAsset MobileAssetAssetAudience -string 92897351-9c90-4132-84a8-2c4b3b5fced5
+sudo defaults write com.apple.MobileAsset MobileAssetServerURL-com.apple.MobileAsset.SoftwareUpdate -string &quot;https://swscan.apple.com/content/catalogs/others/index-seed-26-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog.gz&quot;
+sudo killall -HUP mobileassetd
+sudo killall -HUP betaenrollmentd</code></pre>
+<p>the way this works is by the update catalog to an invalid value</p>
+<p>if you ever want to update your mac again,</p>
+<pre><code>sudo defaults write com.apple.MobileAsset MobileAssetAssetAudience -string 60b55e25-a8ed-4f45-826c-c1495a4ccc65
+sudo defaults write com.apple.MobileAsset MobileAssetServerURL-com.apple.MobileAsset.SoftwareUpdate -string &quot;https://swscan.apple.com/content/catalogs/others/index-26-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog.gz&quot;
+sudo killall -HUP mobileassetd
+sudo killall -HUP betaenrollmentd</code></pre>
+</body>
+</html>

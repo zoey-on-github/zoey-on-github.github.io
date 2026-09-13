@@ -18,6 +18,7 @@
 /* Global styles */
 * {
     box-sizing: border-box;
+    text-wrap: pretty;
 }
 
 body,
@@ -47,7 +48,12 @@ h1 {
     font-family: "marathon";
     color: #c3ff0b;
 }
-
+pre {
+    white-space: pre-wrap;
+}
+/*code {
+    text-wrap: pretty;
+}*/
 /* Cleaner links */
 :where(a) {
     color: #66f;

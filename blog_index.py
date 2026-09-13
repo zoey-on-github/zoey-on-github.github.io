@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 import os
 
-with open("blog/a_blog.html") as fp:
-    soup = BeautifulSoup(fp, 'html.parser')
+#with open("blog/a_blog.html") as fp:
+    #soup = BeautifulSoup(fp, 'html.parser')
+#soup = BeautifulSoup('html.parser')
 f = open("blog_index.html","w")
 f.write("<head>"+"\n")
 f.write("    <title>gay raccoon girl on the web</title>"+"\n")

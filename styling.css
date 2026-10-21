@@ -51,6 +51,11 @@ h1 {
 pre {
     white-space: pre-wrap;
 }
+img {
+  max-width:300px;
+  height:auto;
+}
+
 /*code {
     text-wrap: pretty;
 }*/

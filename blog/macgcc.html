@@ -106,12 +106,12 @@ so-called <code>gcc</code> is just clang in disguise<br></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gcc</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">clang:</span> error: no input files</span></code></pre></div>
 <p>most people(fairly) assume that this is just an alias, but this is
-not true! it’s a binary<br></p>
+not true! it’s a binary!<br></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which gcc</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/gcc</span></span></code></pre></div>
 <p>now, what <em>is</em> this binary? i naively assumed that it would
 just be shelling out to <code>clang</code> but it turns out the answer
-is more interesting than that<br></p>
+is more interesting than that.<br></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sub_1000006c4<span class="op">(</span><span class="dt">int</span> arg0<span class="op">,</span> <span class="dt">int</span> arg1<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    r19 <span class="op">=</span> arg1<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    r20 <span class="op">=</span> arg0<span class="op">;</span></span>
@@ -200,21 +200,23 @@ checking if it’s being run as c++ or llvm-gcc specifically), but the key
 thing we’re interested in is this line of code:<br></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xcselect_invoke_xcrun<span class="op">()</span></span></code></pre></div>
 <p>this is a function from libxcselect.dylib, but it’s basically the
-same thing as running <code>xcrun</code>(fun fact: <a
+same thing as running <code>xcrun</code>.(fun fact: <a
 href="images/Screenshot_2026-10-21_at_11.38.00_PM.png">the xcrun binary
-basically just calls this function</a>) <br> but that raises the
-important question: what does xcrun <em>do</em>? i’ve certainly never
-heard of it before this<br> well, checking <a
+basically just calls this function</a>) <a
+href="images/Screenshot_2026-10-21_at_12.57.05_PM.png">if you
+disassemble any xcode-installed developer tool, you’ll see this exact
+same binary</a>,meaning all the developer tools that xcode-select
+installs on macOS are actually just being run through xcrun.<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> <br> but that raises the important
+question: what does xcrun <em>do</em>? i’ve certainly never heard of it
+before this.<br> well, checking <a
 href="https://keith.github.io/xcode-man-pages/xcrun.1.html">the
 manpage</a> we can see that it calls developer tools from the developer
-tool directory. <a
-href="images/Screenshot_2026-10-21_at_12.57.05_PM.png">all the developer
-tools that xcode-select installs on macOS are actually just being run
-through xcrun.</a><a href="#fn1" class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a> this gives us an important bit of
-info: the location of the <em>actual</em> gcc binary that’s being
-called. thankfully for us, there is a <code>--find</code> command that
-can give us exactly this.<br></p>
+tool directory. this gives us an important bit of info: the location of
+the <em>actual</em> gcc binary that’s being called. thankfully for us,
+there is a <code>--find</code> command that can give us exactly
+this.<br></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> xcrun <span class="at">--find</span> gcc</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Library/Developer/CommandLineTools/usr/bin/gcc</span></span></code></pre></div>
 <p>looking in this directory, we can see that:<br> c++, llvm-gcc,

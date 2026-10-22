@@ -1,17 +1,23 @@
 ---
 title: examining the macOS gcc binary
 ---
+
 if you've ever written C(or c++) on a mac, you'll know that the so-called `gcc` is just clang in disguise<br>
+
 ```sh
 $ gcc
 clang: error: no input files
 ```
-most people(fairly) assume that this is just an alias, but this is not true! it's a binary<br>
+
+most people(fairly) assume that this is just an alias, but this is not true! it's a binary!<br>
+
 ```sh
 $ which gcc
 /usr/bin/gcc
 ```
-now, what *is* this binary? i naively assumed that it would just be shelling out to `clang` but it turns out the answer is more interesting than that<br>
+
+now, what _is_ this binary? i naively assumed that it would just be shelling out to `clang` but it turns out the answer is more interesting than that.<br>
+
 ```c
 int sub_1000006c4(int arg0, int arg1) {
     r19 = arg1;
@@ -97,25 +103,31 @@ int sub_1000006c4(int arg0, int arg1) {
     }
 }
 ```
+
 there's some interesting stuff here(for example special logic for checking if it's being run as c++ or llvm-gcc specifically), but the key thing we're interested in is this line of code:<br>
+
 ```c
 xcselect_invoke_xcrun()
- ```
-this is a function from libxcselect.dylib, but it's basically the same thing as running `xcrun`(fun fact: [the xcrun binary basically just calls this function](images/Screenshot_2026-10-21_at_11.38.00_PM.png)) <br>
-but that raises the important question: what does xcrun *do*? i've certainly never heard of it before this<br>
-well, checking [the manpage](https://keith.github.io/xcode-man-pages/xcrun.1.html) we can see that it calls developer tools from the developer tool directory. [all the developer tools that xcode-select installs on macOS are actually just being run through xcrun.](images/Screenshot_2026-10-21_at_12.57.05_PM.png)^[if you're wondering *why* this is, my guess is because of SIP. /usr/bin is a protected directory on macOS and i assume apple can't update it without requiring a restart, and you can update the xcode tools without having to restart your mac. as for why they dont just add the developer tools directory to path, my guess is that they want the freedom to change this directory whenever they want] this gives us an important bit of info: the location of the *actual* gcc binary that's being called. thankfully for us, there is a `--find` command that can give us exactly this.<br>
+```
+
+this is a function from libxcselect.dylib, but it's basically the same thing as running `xcrun`.(fun fact: [the xcrun binary basically just calls this function](images/Screenshot_2026-10-21_at_11.38.00_PM.png)) [if you disassemble any xcode-installed developer tool, you'll see this exact same binary](images/Screenshot_2026-10-21_at_12.57.05_PM.png),meaning all the developer tools that xcode-select installs on macOS are actually just being run through xcrun.^[if you're wondering _why_ this is, my guess is because of SIP. /usr/bin is a protected directory on macOS and i assume apple can't update it without requiring a restart, and you can update the xcode tools without having to restart your mac. as for why they dont just add the developer tools directory to path, my guess is that they want the freedom to change this directory whenever they want] <br>
+but that raises the important question: what does xcrun _do_? i've certainly never heard of it before this.<br>
+well, checking [the manpage](https://keith.github.io/xcode-man-pages/xcrun.1.html) we can see that it calls developer tools from the developer tool directory. this gives us an important bit of info: the location of the _actual_ gcc binary that's being called. thankfully for us, there is a `--find` command that can give us exactly this.<br>
+
 ```sh
 $ xcrun --find gcc
 /Library/Developer/CommandLineTools/usr/bin/gcc
 ```
+
 looking in this directory, we can see that:<br>
 c++, llvm-gcc, llvm-g++ aren't in this directory, that's why they're hardcoded into the binary itself<br>
 cc and clang++ are just alises to clang<br>
 ![](images/Screenshot_2026-10-21_at_1.11.00_PM.png) ![](images/Screenshot_2026-10-21_at_1.11.10_PM.png)<br>
 but most interestingly, g++ is an alias to an actual gcc binary that's in the same directory:<br>
 ![](images/Screenshot_2026-10-21_at_11.54.47_PM.png)<br>
-well, what does *that* gcc binary do, then?<br>
+well, what does _that_ gcc binary do, then?<br>
 opening it in my disassembler, we see that it... shells out to xcrun and calls clang(or clang++ depending on how it's called) <br>
+
 ```C
 int EntryPoint(int arg0, int arg1) {
     r22 = arg1;
@@ -150,4 +162,5 @@ int EntryPoint(int arg0, int arg1) {
     return r0;
 }
 ```
+
 <br>

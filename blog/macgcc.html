@@ -200,21 +200,21 @@ checking if it’s being run as c++ or llvm-gcc specifically), but the key
 thing we’re interested in is this line of code:<br></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xcselect_invoke_xcrun<span class="op">()</span></span></code></pre></div>
 <p>this is a function from libxcselect.dylib, but it’s basically the
-same thing as running <code>xcrun</code>(in fact: <a
-href="https://zoey-on-github.github.io/Screenshot_2026-10-21_at_1.26.54_AM.png">the
-xcrun binary basically just calls this function</a>) <br> but that
-raises the important question: what does xcrun <em>do</em>? i’ve
-certainly never heard of it before this<br> well, checking <a
+same thing as running <code>xcrun</code>(fun fact: <a
+href="images/Screenshot_2026-10-21_at_11.38.00_PM.png">the xcrun binary
+basically just calls this function</a>) <br> but that raises the
+important question: what does xcrun <em>do</em>? i’ve certainly never
+heard of it before this<br> well, checking <a
 href="https://keith.github.io/xcode-man-pages/xcrun.1.html">the
 manpage</a> we can see that it calls developer tools from the developer
 tool directory. <a
-href="https://zoey-on-github.github.io/Screenshot_2026-10-21_at_12.57.05_PM.png">all
-the developer tools that xcode-select installs on macOS are actually
-just being run through xcrun.</a><a href="#fn1" class="footnote-ref"
-id="fnref1" role="doc-noteref"><sup>1</sup></a> this gives us an
-important bit of info: the location of the <em>actual</em> gcc binary
-that’s being called. thankfully for us, there is a <code>--find</code>
-command that can give us exactly this.<br></p>
+href="images/Screenshot_2026-10-21_at_12.57.05_PM.png">all the developer
+tools that xcode-select installs on macOS are actually just being run
+through xcrun.</a><a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> this gives us an important bit of
+info: the location of the <em>actual</em> gcc binary that’s being
+called. thankfully for us, there is a <code>--find</code> command that
+can give us exactly this.<br></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> xcrun <span class="at">--find</span> gcc</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Library/Developer/CommandLineTools/usr/bin/gcc</span></span></code></pre></div>
 <p>looking in this directory, we can see that c++, g++, clang++,

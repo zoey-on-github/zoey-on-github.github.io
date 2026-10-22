@@ -217,11 +217,14 @@ called. thankfully for us, there is a <code>--find</code> command that
 can give us exactly this.<br></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> xcrun <span class="at">--find</span> gcc</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Library/Developer/CommandLineTools/usr/bin/gcc</span></span></code></pre></div>
-<p>looking in this directory, we can see that c++, g++, clang++,
-llvm-gcc and cc are just alises to the <code>gcc</code> binary that’s in
-the same directory:<br> <img
+<p>looking in this directory, we can see that:<br> c++, llvm-gcc,
+llvm-g++ aren’t in this directory, that’s why they’re hardcoded into the
+binary itself<br> cc and clang++ are just alises to clang<br> <img
 src="images/Screenshot_2026-10-21_at_1.11.00_PM.png" /> <img
-src="images/Screenshot_2026-10-21_at_1.11.10_PM.png" /><br> well, what
+src="images/Screenshot_2026-10-21_at_1.11.10_PM.png" /><br> but most
+interestingly, g++ is an alias to an actual gcc binary that’s in the
+same directory:<br> <img
+src="images/Screenshot_2026-10-21_at_11.54.47_PM.png" /><br> well, what
 does <em>that</em> gcc binary do, then?<br> opening it in my
 disassembler, we see that it… shells out to xcrun and calls clang(or
 clang++ depending on how it’s called) <br></p>

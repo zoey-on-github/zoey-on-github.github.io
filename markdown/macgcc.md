@@ -108,8 +108,12 @@ well, checking [the manpage](https://keith.github.io/xcode-man-pages/xcrun.1.htm
 $ xcrun --find gcc
 /Library/Developer/CommandLineTools/usr/bin/gcc
 ```
-looking in this directory, we can see that c++, g++, clang++, llvm-gcc and cc are just alises to the `gcc` binary that's in the same directory:<br>
+looking in this directory, we can see that:<br>
+c++, llvm-gcc, llvm-g++ aren't in this directory, that's why they're hardcoded into the binary itself<br>
+cc and clang++ are just alises to clang<br>
 ![](images/Screenshot_2026-10-21_at_1.11.00_PM.png) ![](images/Screenshot_2026-10-21_at_1.11.10_PM.png)<br>
+but most interestingly, g++ is an alias to an actual gcc binary that's in the same directory:<br>
+![](images/Screenshot_2026-10-21_at_11.54.47_PM.png)<br>
 well, what does *that* gcc binary do, then?<br>
 opening it in my disassembler, we see that it... shells out to xcrun and calls clang(or clang++ depending on how it's called) <br>
 ```C

@@ -164,3 +164,6 @@ int EntryPoint(int arg0, int arg1) {
 ```
 
 <br>
+discussions about this post:
+[reddit](https://www.reddit.com/r/programming/comments/1xcwe3o/examining_the_macos_gcc_binary/)
+[lobste.rs](https://lobste.rs/s/hplfis/examining_macos_gcc_binary)
